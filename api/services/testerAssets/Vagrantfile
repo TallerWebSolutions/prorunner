@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.provider :digital_ocean do |provider, override|
+    override.vm.box = "digital_ocean"
+    override.vm.box_url = ""
+  
+    provider.token = ""
+    provider.image = "ubuntu-14-04-x64"
+    provider.region = 'nyc3'
+    provider.size = '512mb'
+  end
+end
