@@ -8,10 +8,15 @@
 module.exports = {
 
   attributes: {
-    timestamp: { type: 'datetime' },
     state: { type: 'string', defaultsTo: 'init' },
-    env: { type: 'string' },
+    env: { type: 'string', required: 'true' },
     result: { type: 'json' }
+  },
+
+  afterCreate: function(values, cb) {
+    console.log(values);
+    cb()
   }
+
 };
 
