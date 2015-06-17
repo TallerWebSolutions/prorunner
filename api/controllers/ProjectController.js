@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-	
+	test: function(req, res) {
+  	var env = req.param('env'),
+  	    key = req.param('key');
+	}
 };
 

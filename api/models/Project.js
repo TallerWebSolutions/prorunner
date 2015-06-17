@@ -9,8 +9,15 @@ module.exports = {
 
   attributes: {
     name: { type: 'string', required: true },
-    owner: { model: 'User' }
+    owner: { model: 'User' },
+    envs: { collection: 'Env', via: 'projetc' },
+    repo: { type: 'string' },
+    testInstances: { collection: 'TestInstance' },
+    key: { type: 'string' }
+  },
+  
+  beforeCreate: function(values, cb) {
+    values.key = crypto.randomBytes(20).toString('hex');
   }
-
 };
 

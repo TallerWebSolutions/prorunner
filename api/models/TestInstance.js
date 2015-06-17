@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     state: { type: 'string', defaultsTo: 'init' },
     env: { type: 'string', required: 'true' },
-    source: { type: 'json' },
+    status: { type: 'string', defaultsTo: 'init' },
     result: { type: 'json' }
   },
 
