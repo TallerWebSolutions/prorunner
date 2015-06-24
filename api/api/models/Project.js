@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     name: { type: 'string', required: true },
     owner: { model: 'User' },
-    envs: { collection: 'Env', via: 'projetc' },
+    envs: { collection: 'Env', via: 'project' },
     repo: { type: 'string' },
     testInstances: { collection: 'TestInstance' },
     key: { type: 'string' }
