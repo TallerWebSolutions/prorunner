@@ -1,1 +1,0 @@
-angular.module('prorunner.todo', []);
