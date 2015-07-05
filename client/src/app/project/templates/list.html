@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <h1 class="page-header">
+      My Projects
+      <div class="pull-right">
+        <a
+          data-ui-sref="projects.create"
+          class="btn btn-primary"
+        >Add new project</a>
+      </div>
+    </h1>
+
+    <div data-ng-repeat="item in items" class="col-lg-4 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body" style="height: 150px; overflow: hidden;">
+          <h4>{{item.name}}</h4>
+          <p>{{item.description}}</p>
+        </div>
+        <div class="panel-footer">
+          <a data-ui-sref="projects.project({id: item.id})" class="btn btn-sm btn-primary">Open</a>
+          <!-- <a class="btn btn-sm btn-success">Edit</a> -->
+          <a
+            ng-bootbox-title="Comfirm delete project"
+            ng-bootbox-confirm="Are you sure about the <strong>{{item.name}}</strong> project delete?"
+            ng-bootbox-confirm-action="cofirmDelete($index)"
+            class="btn btn-sm btn-danger">Delete</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
