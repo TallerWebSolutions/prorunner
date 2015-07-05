@@ -4,7 +4,7 @@ A test application
 
 ## Installation
 
-First of all you have to install `npm` and `node.js` to your box. Installation instructions with *nvm* can be found [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-with-nvm-node-version-manager-on-a-vps).
+First of all you have to install `npm` and `node.js` to your box. Installation instructions with `nvm` can be found [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-with-nvm-node-version-manager-on-a-vps).
 
 After that you need to install `bower`, `gulp` and `sails` main packages to make all things to happen. These can be installed with following commands on your box.
 
