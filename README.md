@@ -1,8 +1,20 @@
-# prorunner
+# Prorunner
 
-A [Sails](http://sailsjs.org) application
+A test application
 
-## How initialize this application
+## Installation
+
+First of all you have to install npm and node.js to your box. Installation instructions with nvm can be found [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-with-nvm-node-version-manager-on-a-vps).
+
+After that you need to install bower, gulp and sails main packages to make all things to happen. These can be installed with following commands on your box.
+
+```
+sudo npm install bower -g
+sudo npm install gulp -g
+sudo npm install sails -g
+```
+
+## How running this application
 
 ### Server
 
