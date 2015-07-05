@@ -7,20 +7,63 @@
     <!-- endinject -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/todo/todo.css">
     <!-- endinject -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
   </head>
   <body>
-    <ng-view></ng-view>
+    <div ui-view>
+
+      <div class="container">
+        <div ui-view="content"></div>
+      </div>
+
+    </div>
+
+  <script>
+    (function onLoad() {
+      var io;
+      Object.defineProperty(window, 'io', {
+        get: function get() {
+          return io;
+        },
+        set: function set(value) {
+          var sails;
+          io = value;
+          Object.defineProperty(io, 'sails', {
+            get: function get() {
+              return sails;
+            },
+            set: function set(value) {
+              sails = value;
+              sails.url = '@@backendUrl';
+            }
+          });
+        }
+      });
+    })();
+  </script>
+
     <!-- inject:vendor:js -->
     <script src="/angular/angular.js"></script>
-    <script src="/angular-route/angular-route.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/lodash/lodash.js"></script>
+    <script src="/sails.io.js/dist/sails.io.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/angularSails/dist/ngsails.io.js"></script>
+    <script src="/bootbox/bootbox.js"></script>
+    <script src="/ngBootbox/dist/ngBootbox.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
-    <script src="/todo/todo.js"></script>
-    <script src="/todo/todo-controller.js"></script>
-    <script src="/project/project.module.js"></script>
-    <script src="/project/project.controllers.js"></script>
+    <script src="/core/module.js"></script>
+    <script src="/core/services/DataService.js"></script>
+    <script src="/core/services/DataModel.js"></script>
+    <script src="/project/module.js"></script>
+    <script src="/project/services.js"></script>
+    <script src="/project/controllers.js"></script>
     <script src="/app.js"></script>
     <script src="/prorunner-templates.js"></script>
     <!-- endinject -->
