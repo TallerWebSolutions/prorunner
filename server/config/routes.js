@@ -22,6 +22,11 @@
 
 module.exports.routes = {
 
+  // See https://github.com/balderdashy/sails/issues/2062
+  'OPTIONS /*': function(req, res) {
+    res.send(200);
+  },
+
   /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
@@ -31,11 +36,7 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
-  '/': {
-    view: 'homepage'
-  }
-
+  
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -45,5 +46,4 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
 };
