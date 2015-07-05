@@ -2,6 +2,8 @@
 'use strict';
 
 var gulp = require('gulp'),
+    replace = require('gulp-replace-task'),
+    fs = require('fs'),
     g = require('gulp-load-plugins')({lazy: false}),
     noop = g.util.noop,
     es = require('event-stream'),
@@ -20,6 +22,15 @@ var htmlminOpts = {
   collapseBooleanAttributes: true,
   removeRedundantAttributes: true
 };
+
+var settings;
+
+// Try to read frontend configuration file, fallback to default file
+try {
+  settings = JSON.parse(fs.readFileSync('./config/settings.json', 'utf8'));
+} catch (error) {
+  settings = JSON.parse(fs.readFileSync('./config/default.settings.json', 'utf8'));
+}
 
 /**
  * JS Hint
@@ -111,6 +122,14 @@ function index () {
     .pipe(g.inject(es.merge(appFiles(), cssFiles(opt)), {ignorePath: ['.tmp', 'src/app']}))
     .pipe(gulp.dest('./src/app/'))
     .pipe(g.embedlr())
+    .pipe(replace({
+      patterns: [
+        {
+          match: 'backendUrl',
+          replacement: settings.backendUrl
+        }
+      ]
+    }))
     .pipe(gulp.dest('./.tmp/'))
     .pipe(livereload());
 }
@@ -130,6 +149,14 @@ gulp.task('dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist'], function
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist'}))
+    .pipe(replace({
+      patterns: [
+        {
+          match: 'backendUrl',
+          replacement: settings.backendUrl
+        }
+      ]
+    }))
     .pipe(g.htmlmin(htmlminOpts))
     .pipe(gulp.dest('./dist/'));
 });
