@@ -16,6 +16,12 @@ sudo npm install sails -g
 
 ## How running this application
 
+After running the application run the current command to install server and client dependencies.
+
+  ```
+  npm install
+  ```
+
 ### Server
 
   ```
