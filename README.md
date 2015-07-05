@@ -17,4 +17,4 @@ This will start sails.js server on defined port. By default this is accessible f
   cd client
   gulp serve
   ```
-This will start simple web server that you can use within developing frontend side. By default this is accessible from http://localhost:3001 url. You should be see projects page.
+This will start simple web server that you can use within developing frontend side. By default this is accessible from http://localhost:3000 url. You should be see projects page.
