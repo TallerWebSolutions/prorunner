@@ -5,6 +5,8 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+var crypto = require('crypto');
+
 module.exports = {
 
   attributes: {
@@ -16,8 +18,9 @@ module.exports = {
     key: { type: 'string' }
   },
   
-  beforeCreate: function(values, cb) {
+  beforeCreate: function(values, callback) {
     values.key = crypto.randomBytes(20).toString('hex');
+    callback()
   }
 };
 
